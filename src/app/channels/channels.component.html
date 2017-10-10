@@ -1,0 +1,14 @@
+<div class="form-group">
+  <div name="add-channel">
+    <span>&lt;add channel&gt;</span>
+  </div>
+  <accordion>
+    <accordion-group [heading]="channel.Name" *ngFor="let channel of (channels | async)">
+      <ul>
+        <li *ngFor="let feed of channel.Feeds">
+          <app-feed [currentFeed]="feed"></app-feed>
+        </li>
+      </ul>
+    </accordion-group>
+  </accordion>
+</div>

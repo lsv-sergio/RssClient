@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { WebApiRouteBuilder } from "./WebApiRouteBuilder";
-import { BaseService } from "./Base.Service";
-import { Channel } from "../Entities/Channel.Entitity";
+import { WebApiRouteBuilder } from "./webapi-route-builder";
+import { BaseService } from "./base.service";
+import { Channel } from "../Entities/channel.entitity";
 
 @Injectable()
 export class ChannelService extends BaseService {

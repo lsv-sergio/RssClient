@@ -6,7 +6,7 @@
     <accordion-group [heading]="channel.Name" *ngFor="let channel of (channels | async)">
       <ul>
         <li *ngFor="let feed of channel.Feeds">
-          <app-feed [currentFeed]="feed"></app-feed>
+          <app-feed [currentFeed]="feed" (onFeedClicked)="onFeedClick($event)"></app-feed>
         </li>
       </ul>
     </accordion-group>

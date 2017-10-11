@@ -1,14 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Feed } from "../Core/Entities/Feed.Entity";
+import { Article } from "../Core/Entities/article.entity";
 
 @Component({
-  selector: 'app-articles',
+  selector: 'app-article',
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.css']
 })
 export class ArticlesComponent implements OnInit {
 
-    currentFeed: Feed;
+   @Input()currentArticle: Article;
 
   constructor() { }
 

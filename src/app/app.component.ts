@@ -1,31 +1,36 @@
 import { Component } from '@angular/core';
-import { Channel } from "./Core/Entities/Channel.Entitity";
+//import { Channel } from "./Core/Entities/channel.entitity";
 import { FeedService } from "./Core/Services/Feed.Service";
-import { Feed } from "./Core/Entities/Feed.Entity";
+import { Feed } from "./Core/Entities/feed.entity";
+import { ArticleService } from "./Core/Services/article.service";
+import { Article } from "./Core/Entities/article.entity";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [FeedService]
+  providers: [ArticleService]
 })
 export class AppComponent {
 
     title = 'app';
-    currentChannel: Channel;
+    //currentChannel: Channel;
+    currentFeed: Feed;
     feeds: Promise<Feed[]>;
+    articles: Promise<Article[]>;
 
-    constructor(private feedService: FeedService) {}
+    constructor(private articleService: ArticleService) {}
 
-    onChannelChanged(channel: Channel) {
-        this.currentChannel = channel;
-        if (channel) {
-            this.loadFeedsByChannel(channel);
+    onFeedChanged(feed: Feed) {
+        debugger;
+        this.currentFeed = feed;
+        if (feed) {
+            this.loadArticlesByFeed(feed);
         }
     }
-    loadFeedsByChannel(channel: Channel) {
-        if (channel) {
-            this.feeds = this.feedService.getFeedsByChannel(channel.Id);
+    loadArticlesByFeed(feed: Feed) {
+        if (feed) {
+            this.feeds = this.articleService.getArticlesByFeed(feed.Id);
         }
     }
 }

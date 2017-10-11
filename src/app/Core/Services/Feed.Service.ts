@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { Feed } from "../Entities/Feed.Entity";
-import { WebApiRouteBuilder } from "./WebApiRouteBuilder";
-import { BaseService } from "./Base.Service";
+import { Feed } from "../Entities/feed.entity";
+import { WebApiRouteBuilder } from "./webapi-route-builder";
+import { BaseService } from "./base.service";
 
 @Injectable()
 export class FeedService extends BaseService {

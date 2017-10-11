@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Channel } from "../Core/Entities/Channel.Entitity";
-import { Feed } from "../Core/Entities/Feed.Entity";
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Channel } from "../Core/Entities/channel.entitity";
+import { Feed } from "../Core/Entities/feed.entity";
 
 @Component({
   selector: 'app-feed',
@@ -10,6 +10,7 @@ import { Feed } from "../Core/Entities/Feed.Entity";
 export class FeedComponent implements OnInit {
 
     @Input() currentChannel: Channel;
+    @Output() onFeedClicked = new EventEmitter<Feed>();
 
     private _currentFeed: Feed;
     get currentFeed(): Feed {
@@ -25,7 +26,12 @@ export class FeedComponent implements OnInit {
 
     constructor() { }
 
-  ngOnInit() {
-  }
+    ngOnInit() { }
+
+    onFeedClick(event: Event) {
+        event.preventDefault();
+        event.cancelBubble = true;
+        this.onFeedClicked.emit(this.currentFeed);
+    }
 
 }

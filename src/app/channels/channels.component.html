@@ -4,11 +4,11 @@
   </div>
   <accordion>
     <accordion-group [heading]="channel.Name" *ngFor="let channel of (channels | async)">
-      <ul>
-        <li *ngFor="let feed of channel.Feeds">
+      <div>
+        <a *ngFor="let feed of channel.Feeds">
           <app-feed [currentFeed]="feed" (onFeedClicked)="onFeedClick($event)"></app-feed>
-        </li>
-      </ul>
+        </a>
+      </div>
     </accordion-group>
   </accordion>
 </div>

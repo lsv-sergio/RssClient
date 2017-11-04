@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 //import { Channel } from "./Core/Entities/channel.entitity";
 import { FeedService } from "./Core/Services/Feed.Service";
 import { Feed } from "./Core/Entities/feed.entity";
 import { ArticleService } from "./Core/Services/article.service";
 import { Article } from "./Core/Entities/article.entity";
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'app-root',
@@ -17,12 +18,11 @@ export class AppComponent {
     //currentChannel: Channel;
     currentFeed: Feed;
     feeds: Promise<Feed[]>;
-    articles: Promise<Article[]>;
+    articles: Article[];
 
-    constructor(private articleService: ArticleService) {}
+    constructor(private articleService: ArticleService) { }
 
     onFeedChanged(feed: Feed) {
-        debugger;
         this.currentFeed = feed;
         if (feed) {
             this.loadArticlesByFeed(feed);
@@ -30,7 +30,11 @@ export class AppComponent {
     }
     loadArticlesByFeed(feed: Feed) {
         if (feed) {
-            this.feeds = this.articleService.getArticlesByFeed(feed.Id);
+            this.articleService
+                .getArticlesByFeed(feed.Id)
+                .subscribe(articles => this.articles = articles);
         }
+    }
+    OnDestroy() {
     }
 }

@@ -14,7 +14,9 @@ export class ChannelService extends BaseService {
         }
         return this.http
             .get(
-            this.webApiRouteBuilder.buildChannelAllEntitiesUrl() + "/" + userId)
+            this.webApiRouteBuilder.buildChannelAllEntitiesUrl() + "/" + userId,
+            { headers: new Headers() }
+            )
             .toPromise()
             .then(response => response.json())
             .catch(this.handleError)

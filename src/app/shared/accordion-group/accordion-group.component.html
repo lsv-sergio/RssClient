@@ -1,12 +1,13 @@
-<div class="panel panel-default" [ngClass]="{'panel-open': isOpen}">
-  <div class="panel-heading" (click)="toggleOpen($event)">
-    <h5 class="panel-title">
-      <a href tabindex="0"><span>{{heading}}</span></a>
+<div class="panel panel-default" [ngClass]="{'panel-open': isOpen, 'card': true}">
+  <div class="panel-heading card-header" (click)="toggleOpen($event)">
+    <h5 class="panel-title mb-0">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{{heading}}</a>
     </h5>
   </div>
-  <div class="panel-collapse" [hidden]="!isOpen">
+  <div class="panel-collapse card-block" [hidden]="!isOpen">
     <div class="panel-body">
       <ng-content></ng-content>
     </div>
   </div>
 </div>
+

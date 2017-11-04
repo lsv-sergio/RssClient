@@ -35,7 +35,6 @@ export class ChannelsComponent implements OnInit {
     //    this.reloadArticles.emit(channel);
     //}
     onFeedClick(feed: Feed) {
-        debugger;
         this.onFeedChanged.emit(feed);
     }
 }

@@ -10,7 +10,7 @@
   <div class="row">
     <div class="col-md-4"><app-channels (onFeedChanged) = "onFeedChanged($event)"></app-channels></div>
     <div class="col-md-8">
-    <div class="row" *ngFor="let article of (articles | async)">
+    <div class="row" *ngFor="let article of articles">
       <app-article [currentArticle]="article"></app-article>
     </div>
     </div>
